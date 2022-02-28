@@ -22,12 +22,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/tokens/create', function (Request $request) {
 
-    $user = Usuario::where('Email', $request->email)->where('Password', $request->password)->first();
+
+    if ($request->email == null || $request->password == null) {
+        return;
+        //$error = ["error" => "Campos Email o Password Vacio"];
+    }
+
+    $user = Usuario::where("email", $request->email)->where("password", $request->password)->first();
 
     if ($user) {
-        $success['token'] =  $user->createToken('test')->accessToken;
-        return response()->json(['success' => $success['token']]);
+        $token = $user->createToken('Personal Access Token');
+
+        return [
+            'token' => $token->plainTextToken,
+            // 'user' => $user
+        ];
     } else {
-        return response()->json(['error' => 'Unauthorised'], 401);
+        return ['error' => "Usuario no encontrado"];
     }
 });
