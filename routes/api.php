@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\AuthenticationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::apiResource('usuarios', UsuariosController::class);
+});
+
+Route::post('/tokens/create', function (Request $request) {
+
+    $user = Usuario::where('Email', $request->email)->where('Password', $request->password)->first();
+
+    if ($user) {
+        $success['token'] =  $user->createToken('test')->accessToken;
+        return response()->json(['success' => $success['token']]);
+    } else {
+        return response()->json(['error' => 'Unauthorised'], 401);
+    }
 });
