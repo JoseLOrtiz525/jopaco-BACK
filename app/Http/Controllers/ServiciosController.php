@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ServiciosCollection;
+use App\Http\Resources\ServiciosResource;
 use App\Models\Servicios;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,15 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Nombre_Servicio' => 'required|string|max:25',
+            'Costo' => 'required|string|max:25',
+            'Tiempo_Estimado' => 'required|string|max:25'
+        ]);
+        $servicios = Servicios::create($request->all());
+        // return new ServiciosResource($servicios);
+
+        return ['success' => "Servicio Creado Correctamente"];
     }
 
     /**
@@ -45,9 +54,10 @@ class ServiciosController extends Controller
      * @param  \App\Models\Servicios  $servicios
      * @return \Illuminate\Http\Response
      */
-    public function show(Servicios $servicios)
+    public function show($id)
     {
-        //
+        $servicios = Servicios::find($id);
+        return $servicios;
     }
 
     /**
@@ -68,9 +78,25 @@ class ServiciosController extends Controller
      * @param  \App\Models\Servicios  $servicios
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servicios $servicios)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'Nombre_Servicio' => 'required|string|max:25',
+            'Costo' => 'required|string|max:25',
+            'Tiempo_Estimado' => 'required|string|max:25'
+        ]);
+
+        $servicios = Servicios::find($id);
+
+        $servicios->Nombre_Servicio = $request->Nombre_Servicio;
+        $servicios->Costo = $request->Costo;
+        $servicios->Tiempo_Estimado = $request->Tiempo_Estimado;
+
+        $servicios->save();
+
+        // se necesita validar por algun error en el correo
+
+        return ['success' => "Servicio Actualizado Correctamente"];
     }
 
     /**
@@ -79,8 +105,10 @@ class ServiciosController extends Controller
      * @param  \App\Models\Servicios  $servicios
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Servicios $servicios)
+    public function destroy($id)
     {
-        //
+        $servicios = Servicios::find($id);
+        $servicios->delete();
+        return ['success' => "Servicio Eliminado Correctamente"];
     }
 }

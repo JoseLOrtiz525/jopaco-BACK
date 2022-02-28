@@ -4,54 +4,44 @@ Content-Type: application/json
 Accept: application/json
 Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
 
+##create no lo ocupo
+
 ## store
-POST http://127.0.0.1:8000/api/usuarios HTTP/1.1
+POST http://127.0.0.1:8000/api/servicios HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
 
 {
-      "Nombre":"Benito Pablo"
-    , "Apellido_Paterno":"Juárez"
-    , "Apellido_Materno":"García"
-    , "Fecha_Nacimiento":"1806-03-21"
-    , "Sexo":"Masculino"
-    , "Perfil":"Administrador"
-    , "Estatus":"Activo"
-    , "Email":"benito@correo.com"
-    , "Password":"123456789"
+      "Nombre_Servicio":"Jopaco3"
+    , "Costo":"12003"
+    , "Tiempo_Estimado":"2 dias3"
 }
 
 ## show
-GET http://127.0.0.1:8000/api/usuarios/2 HTTP/1.1
+GET http://127.0.0.1:8000/api/servicios/2 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
 
 ## edit No lo ocupo
 
 
 ## update
-PATCH http://127.0.0.1:8000/api/usuarios/2 HTTP/1.1
+PATCH http://127.0.0.1:8000/api/servicios/2 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
 
 {
-      "Nombre":"Juan"
-    , "Apellido_Paterno":"Juárez"
-    , "Apellido_Materno":"García"
-    , "Fecha_Nacimiento":"1806-03-21"
-    , "Sexo":"Masculino"
-    , "Perfil":"Administrador"
-    , "Estatus":"Activo"
-    , "Email":"benito@correo.com"
-    , "Password":"123456789"
+      "Nombre_Servicio":"Otra empresa"
+    , "Costo":"mucho"
+    , "Tiempo_Estimado":"mucho"
 }
 
 ## destroy
 
-DELETE http://127.0.0.1:8000/api/usuarios/2 HTTP/1.1
+DELETE http://127.0.0.1:8000/api/servicios/2 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC

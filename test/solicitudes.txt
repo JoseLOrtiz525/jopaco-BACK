@@ -4,6 +4,8 @@ Content-Type: application/json
 Accept: application/json
 Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
 
+##create no lo ocupo
+
 ## store
 POST http://127.0.0.1:8000/api/usuarios HTTP/1.1
 Content-Type: application/json
