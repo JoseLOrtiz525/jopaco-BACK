@@ -36,7 +36,17 @@ class NegocioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Nombre_Negocio' => 'required|string|max:25',
+            'Direccion' => 'required|string|max:25',
+            'Horario_Servicio' => 'required|string|max:25',
+            'Dias_Servicio' => 'required|string|max:25',
+            'Descripcion_Del_Negocio' => 'required|string|max:25',
+            'Usuario_Id' => 'required'
+        ]);
+        $negocio = Negocio::create($request->all());
+        // return new UserResource($usuario);
+        return ['success' => "Negocio Creado Correctamente"];
     }
 
     /**
@@ -45,9 +55,10 @@ class NegocioController extends Controller
      * @param  \App\Models\Negocio  $negocio
      * @return \Illuminate\Http\Response
      */
-    public function show(Negocio $negocio)
+    public function show($id)
     {
-        //
+        $negocio = Negocio::find($id);
+        return $negocio;
     }
 
     /**
@@ -68,9 +79,31 @@ class NegocioController extends Controller
      * @param  \App\Models\Negocio  $negocio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Negocio $negocio)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'Nombre_Negocio' => 'required|string|max:25',
+            'Direccion' => 'required|string|max:25',
+            'Horario_Servicio' => 'required|string|max:25',
+            'Dias_Servicio' => 'required|string|max:25',
+            'Descripcion_Del_Negocio' => 'required|string|max:25',
+            'Usuario_Id' => 'required'
+        ]);
+
+        $negocio = Negocio::find($id);
+
+        $negocio->Nombre_Negocio = $request->Nombre_Negocio;
+        $negocio->Direccion = $request->Direccion;
+        $negocio->Horario_Servicio = $request->Horario_Servicio;
+        $negocio->Dias_Servicio = $request->Dias_Servicio;
+        $negocio->Descripcion_Del_Negocio = $request->Descripcion_Del_Negocio;
+        $negocio->Usuario_Id = $request->Usuario_Id;
+
+        $negocio->save();
+
+        // se necesita validar por algun error en el correo
+
+        return ['success' => "Negocio Actualizado Correctamente"];
     }
 
     /**
@@ -79,8 +112,10 @@ class NegocioController extends Controller
      * @param  \App\Models\Negocio  $negocio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Negocio $negocio)
+    public function destroy($id)
     {
-        //
+        $negocio = Negocio::find($id);
+        $negocio->delete();
+        return ['success' => "Negocio Eliminado Correctamente"];
     }
 }
