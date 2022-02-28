@@ -7,3 +7,5 @@ Accept: application/json
     "email":"administrador@correo.com"
     , "password":"12345678"
 }
+
+1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC

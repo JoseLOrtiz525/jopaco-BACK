@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Preguntas;
+use App\Models\Respuestas;
 use Illuminate\Http\Request;
 
-class PreguntasController extends Controller
+class RespuestasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +41,10 @@ class PreguntasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Preguntas  $preguntas
+     * @param  \App\Models\Respuestas  $respuestas
      * @return \Illuminate\Http\Response
      */
-    public function show(Preguntas $preguntas)
+    public function show(Respuestas $respuestas)
     {
         //
     }
@@ -53,10 +52,10 @@ class PreguntasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Preguntas  $preguntas
+     * @param  \App\Models\Respuestas  $respuestas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Preguntas $preguntas)
+    public function edit(Respuestas $respuestas)
     {
         //
     }
@@ -65,10 +64,10 @@ class PreguntasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Preguntas  $preguntas
+     * @param  \App\Models\Respuestas  $respuestas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Preguntas $preguntas)
+    public function update(Request $request, Respuestas $respuestas)
     {
         //
     }
@@ -76,10 +75,10 @@ class PreguntasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Preguntas  $preguntas
+     * @param  \App\Models\Respuestas  $respuestas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Preguntas $preguntas)
+    public function destroy(Respuestas $respuestas)
     {
         //
     }

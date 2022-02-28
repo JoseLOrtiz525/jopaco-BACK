@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Usuario;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class UsuarioSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class UsuarioSeeder extends Seeder
     {
         $now = Carbon::now('America/Mexico_City')->format('Y-m-d H:i:s');
 
-        Usuario::insert([
+        User::insert([
             'Nombre'  => 'Administrador',
             'Apellido_Paterno'  => 'Dsm',
             'Apellido_Materno'  => 'Dmm',

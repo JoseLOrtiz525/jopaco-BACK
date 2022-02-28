@@ -23,7 +23,7 @@ class CreateNegociosTable extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('Usuario_Id');
-            $table->foreign('Usuario_Id')->references('id')->on('usuarios');
+            $table->foreign('Usuario_Id')->references('id')->on('users');
         });
     }
 

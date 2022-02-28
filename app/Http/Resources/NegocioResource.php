@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class Negocios extends ResourceCollection
+class NegocioResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,7 +14,6 @@ class Negocios extends ResourceCollection
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
 
         return [
             'id' => $this->id,

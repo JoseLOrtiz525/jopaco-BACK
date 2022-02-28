@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Respuestas;
+use App\Http\Resources\SolicitudesCollection;
+use App\Models\Solicitudes;
 use Illuminate\Http\Request;
 
-class RespuestasController extends Controller
+class SolicitudesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class RespuestasController extends Controller
      */
     public function index()
     {
-        //
+        return new SolicitudesCollection(Solicitudes::all());
     }
 
     /**
@@ -42,10 +42,10 @@ class RespuestasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Respuestas  $respuestas
+     * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function show(Respuestas $respuestas)
+    public function show(Solicitudes $solicitudes)
     {
         //
     }
@@ -53,10 +53,10 @@ class RespuestasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Respuestas  $respuestas
+     * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Respuestas $respuestas)
+    public function edit(Solicitudes $solicitudes)
     {
         //
     }
@@ -65,10 +65,10 @@ class RespuestasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Respuestas  $respuestas
+     * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Respuestas $respuestas)
+    public function update(Request $request, Solicitudes $solicitudes)
     {
         //
     }
@@ -76,10 +76,10 @@ class RespuestasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Respuestas  $respuestas
+     * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Respuestas $respuestas)
+    public function destroy(Solicitudes $solicitudes)
     {
         //
     }

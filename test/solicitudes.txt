@@ -1,0 +1,57 @@
+## Index
+GET http://127.0.0.1:8000/api/solicitudes HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
+
+## store
+POST http://127.0.0.1:8000/api/usuarios HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+
+{
+      "Nombre":"Benito Pablo"
+    , "Apellido_Paterno":"Juárez"
+    , "Apellido_Materno":"García"
+    , "Fecha_Nacimiento":"1806-03-21"
+    , "Sexo":"Masculino"
+    , "Perfil":"Administrador"
+    , "Estatus":"Activo"
+    , "Email":"benito@correo.com"
+    , "Password":"123456789"
+}
+
+## show
+GET http://127.0.0.1:8000/api/usuarios/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+
+## edit No lo ocupo
+
+
+## update
+PATCH http://127.0.0.1:8000/api/usuarios/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l
+
+{
+      "Nombre":"Juan"
+    , "Apellido_Paterno":"Juárez"
+    , "Apellido_Materno":"García"
+    , "Fecha_Nacimiento":"1806-03-21"
+    , "Sexo":"Masculino"
+    , "Perfil":"Administrador"
+    , "Estatus":"Activo"
+    , "Email":"benito@correo.com"
+    , "Password":"123456789"
+}
+
+## destroy
+
+DELETE http://127.0.0.1:8000/api/usuarios/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|4AAwCOQkN6D20yoX9EaHZ4HeKmsU4eJTrANrHu3l

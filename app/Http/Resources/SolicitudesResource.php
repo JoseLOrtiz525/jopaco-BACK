@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class Servicios extends ResourceCollection
+class SolicitudesResource extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -18,10 +18,10 @@ class Servicios extends ResourceCollection
 
         return [
             'id' => $this->id,
-            'Nombre_Servicio' => $this->Nombre_Servicio,
-            'Costo' => $this->Costo,
-            'Tiempo_Estimado' => $this->Tiempo_Estimado,
-
+            'Total' => $this->Total,
+            'Horario_Renta' => $this->Horario_Renta,
+            'Usuario_Id' => $this->Usuario_Id,
+            'Servicio_Id' => $this->Servicio_Id,
         ];
     }
 }

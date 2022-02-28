@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Servicios;
+use App\Http\Resources\UserCollection;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ServiciosController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-        //
+        return new UserCollection(User::all());
     }
 
     /**
@@ -42,10 +42,10 @@ class ServiciosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Servicios  $servicios
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Servicios $servicios)
+    public function show($id)
     {
         //
     }
@@ -53,10 +53,10 @@ class ServiciosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Servicios  $servicios
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Servicios $servicios)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +65,10 @@ class ServiciosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Servicios  $servicios
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servicios $servicios)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +76,10 @@ class ServiciosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Servicios  $servicios
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Servicios $servicios)
+    public function destroy($id)
     {
         //
     }

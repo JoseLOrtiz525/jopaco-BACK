@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Usuario;
+use App\Models\Preguntas;
 use Illuminate\Http\Request;
 
-class UsuarioController extends Controller
+class PreguntasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +41,10 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Usuario  $usuario
+     * @param  \App\Models\Preguntas  $preguntas
      * @return \Illuminate\Http\Response
      */
-    public function show(Usuario $usuario)
+    public function show(Preguntas $preguntas)
     {
         //
     }
@@ -53,10 +52,10 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Usuario  $usuario
+     * @param  \App\Models\Preguntas  $preguntas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit(Preguntas $preguntas)
     {
         //
     }
@@ -65,10 +64,10 @@ class UsuarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Usuario  $usuario
+     * @param  \App\Models\Preguntas  $preguntas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, Preguntas $preguntas)
     {
         //
     }
@@ -76,10 +75,10 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Usuario  $usuario
+     * @param  \App\Models\Preguntas  $preguntas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(Preguntas $preguntas)
     {
         //
     }

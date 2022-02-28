@@ -1,9 +1,12 @@
 <?php
 
-use App\Models\Usuario;
+use App\Http\Controllers\NegocioController;
+use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Auth\AuthenticationException;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +19,25 @@ use Illuminate\Auth\AuthenticationException;
 |
 */
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('usuarios', UserController::class)->except(['create', 'edit']);
+    Route::apiResource('negocios', NegocioController::class)->except(['create', 'edit']);
+    Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
+    Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
+});
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    Route::apiResource('usuarios', UsuariosController::class);
+    return $request->user();
 });
 
 Route::post('/tokens/create', function (Request $request) {
-
 
     if ($request->email == null || $request->password == null) {
         return;
         //$error = ["error" => "Campos Email o Password Vacio"];
     }
 
-    $user = Usuario::where("email", $request->email)->where("password", $request->password)->first();
+    $user = User::where("email", $request->email)->where("password", $request->password)->first();
 
     if ($user) {
         $token = $user->createToken('Personal Access Token');

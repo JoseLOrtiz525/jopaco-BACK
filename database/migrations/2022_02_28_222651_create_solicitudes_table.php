@@ -20,7 +20,7 @@ class CreateSolicitudesTable extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('Usuario_Id');
-            $table->foreign('Usuario_Id')->references('id')->on('usuarios');
+            $table->foreign('Usuario_Id')->references('id')->on('users');
 
             $table->unsignedBigInteger('Servicio_Id');
             $table->foreign('Servicio_Id')->references('id')->on('servicios');
