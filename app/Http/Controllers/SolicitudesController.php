@@ -36,7 +36,15 @@ class SolicitudesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Total' => 'required|string|max:25',
+            'Horario_Renta' => 'required|string|max:25',
+            'Usuario_Id' => 'required',
+            'Servicio_Id' => 'required',
+        ]);
+        $solicitudes = Solicitudes::create($request->all());
+        // return new UserResource($usuario);
+        return ['success' => "Solicitudes Creado Correctamente"];
     }
 
     /**
@@ -45,9 +53,10 @@ class SolicitudesController extends Controller
      * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function show(Solicitudes $solicitudes)
+    public function show($id)
     {
-        //
+        $solicitudes = Solicitudes::find($id);
+        return $solicitudes;
     }
 
     /**
@@ -68,9 +77,25 @@ class SolicitudesController extends Controller
      * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Solicitudes $solicitudes)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'Total' => 'required|string|max:25',
+            'Horario_Renta' => 'required|string|max:25',
+            'Usuario_Id' => 'required',
+            'Servicio_Id' => 'required',
+        ]);
+
+        $solicitudes = Solicitudes::find($id);
+
+        $solicitudes->Total = $request->Total;
+        $solicitudes->Horario_Renta = $request->Horario_Renta;
+        $solicitudes->Usuario_Id = $request->Usuario_Id;
+        $solicitudes->Servicio_Id = $request->Servicio_Id;
+
+        $solicitudes->save();
+
+        return ['success' => "Solicitud Actualizado Correctamente"];
     }
 
     /**
@@ -79,8 +104,10 @@ class SolicitudesController extends Controller
      * @param  \App\Models\Solicitudes  $solicitudes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Solicitudes $solicitudes)
+    public function destroy($id)
     {
-        //
+        $solicitudes = Solicitudes::find($id);
+        $solicitudes->delete();
+        return ['success' => "Solicitud Eliminado Correctamente"];
     }
 }
