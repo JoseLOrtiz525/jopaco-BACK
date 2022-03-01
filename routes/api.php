@@ -44,7 +44,7 @@ Route::post('/tokens/create', function (Request $request) {
 
         return [
             'token' => $token->plainTextToken,
-            // 'user' => $user
+            'user' => $user
         ];
     } else {
         return ['error' => "Usuario no encontrado"];
