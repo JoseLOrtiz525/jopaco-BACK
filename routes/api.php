@@ -33,20 +33,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/tokens/create', function (Request $request) {
 
     if ($request->email == null || $request->password == null) {
-        return;
-        //$error = ["error" => "Campos Email o Password Vacio"];
+        $error = ["error" => "Campos Email o Password Vacio"];
     }
+    $newPass = $request->password;
 
-    $user = User::where("email", $request->email)->where("password", $request->password)->first();
+    $user = User::where("email", $request->email)->first();
 
-    if ($user) {
-        $token = $user->createToken('Personal Access Token');
+    $comprobar = decrypt($user->Password);
 
-        return [
-            'token' => $token->plainTextToken,
-            'user' => $user
-        ];
+    if ($newPass == $comprobar) {
+        if ($user) {
+            $token = $user->createToken('Personal Access Token');
+
+            return [
+                'token' => $token->plainTextToken,
+                'user' => $user
+            ];
+        } else {
+            return ['error' => "Usuario no encontrado"];
+        }
     } else {
-        return ['error' => "Usuario no encontrado"];
+        return ['error' => "Contraseña Incorrecta"];
     }
 });

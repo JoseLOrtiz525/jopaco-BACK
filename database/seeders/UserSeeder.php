@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'Fecha_Nacimiento'  => '2020-01-01',
             'Tipo_Usuario' => 'Administrador',
             'Email'  => 'administrador@correo.com',
-            'Password' => '12345678',
+            'Password' => encrypt('12345678'),
             'created_at' => $now,
             'updated_at' => $now
         ]);
