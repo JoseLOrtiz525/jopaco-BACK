@@ -1,0 +1,49 @@
+## Index
+GET http://127.0.0.1:8000/api/subservicios HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|8MipYaJ3DIKUHAPGCBQ1I84lVf6QYWsbGT5UkQSN
+
+##create no lo ocupo
+
+## store
+POST http://127.0.0.1:8000/api/subservicios HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|8MipYaJ3DIKUHAPGCBQ1I84lVf6QYWsbGT5UkQSN
+
+{
+    "Nombre" : "Paquete Basico",
+    "Descripcion" : "Lo mas basico de el servicio",
+    "Calificacion" : "10",
+    "Precio" : "1000"
+}
+
+## show
+GET http://127.0.0.1:8000/api/subservicios/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|8MipYaJ3DIKUHAPGCBQ1I84lVf6QYWsbGT5UkQSN
+
+## edit No lo ocupo
+
+
+## update
+PATCH http://127.0.0.1:8000/api/subservicios/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|8MipYaJ3DIKUHAPGCBQ1I84lVf6QYWsbGT5UkQSN
+
+{
+     "Nombre" : "Paquete Basico editar",
+     "Descripcion" : "Lo mas basico de el servicio editar",
+     "Calificacion" : "5",
+     "Precio" : "500"
+}
+
+## destroy
+
+DELETE http://127.0.0.1:8000/api/subservicios/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|8MipYaJ3DIKUHAPGCBQ1I84lVf6QYWsbGT5UkQSN

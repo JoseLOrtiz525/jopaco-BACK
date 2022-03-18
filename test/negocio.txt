@@ -13,12 +13,12 @@ Accept: application/json
 Authorization: Bearer 1|SprBZkYj1N3a8dxC3LKe3R5csMx7BB2AOy0ul9hC
 
 {
-      "Nombre_Negocio":"Jopaco2"
-    , "Direccion":"Juárez2"
-    , "Horario_Servicio":"12 - 62"
-    , "Dias_Servicio":"122"
-    , "Descripcion_Del_Negocio":"e-commerce2"
-    , "Usuario_Id":1
+      "Nombre_Negocio":
+    , "Direccion":
+    , "Horario_Servicio":
+    , "Dias_Servicio":
+    , "Descripcion_Del_Negocio":
+    , "Usuario_Id":
 }
 
 ## show
