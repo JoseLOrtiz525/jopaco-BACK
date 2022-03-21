@@ -44,7 +44,8 @@ class UserController extends Controller
             'Fecha_Nacimiento' => 'required|date_format:Y-m-d',
             'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
             'Email' => 'required|email|unique:users,email',
-            'Password' => 'required|min:8'
+            'Password' => 'required|min:8',
+            'Foto' => 'required|string|max:250'
         ]);
         $usuario = User::create($request->all());
         // return new UserResource($usuario);
@@ -90,7 +91,8 @@ class UserController extends Controller
             'Fecha_Nacimiento' => 'required|date_format:Y-m-d',
             'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
             'Email' => 'required|email',
-            'Password' => 'required|min:8'
+            'Password' => 'required|min:8',
+            'Foto' => 'required|string|max:250'
         ]);
 
         $user = User::find($id);
@@ -102,6 +104,7 @@ class UserController extends Controller
         $user->Tipo_Usuario = $request->Tipo_Usuario;
         $user->Email = $request->Email;
         $user->Password = $request->Password;
+        $user->Foto = $request->Foto;
 
         $user->save();
 
