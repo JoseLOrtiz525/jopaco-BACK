@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
             'Tipo_Usuario' => 'Administrador',
             'Email'  => 'administrador@correo.com',
             'Password' => encrypt('12345678'),
-            'Foto' => 'Angel.jpg',
+            'Foto'  => 'user.png',
             'created_at' => $now,
             'updated_at' => $now
         ]);

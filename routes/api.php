@@ -3,6 +3,7 @@
 use App\Http\Controllers\NegocioController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\SubServicioController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('negocios', NegocioController::class)->except(['create', 'edit']);
     Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
     Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
+    Route::apiResource('subservicios', SubServicioController::class)->except(['create', 'edit']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
