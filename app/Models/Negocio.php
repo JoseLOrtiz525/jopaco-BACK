@@ -18,6 +18,7 @@ class Negocio extends Model
         'Horario_Servicio',
         'Dias_Servicio',
         'Descripcion_Del_Negocio',
-        'Usuario_Id'
+        'Usuario_Id',
+        'Foto'
     ];
 }

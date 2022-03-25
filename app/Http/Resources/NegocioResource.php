@@ -23,6 +23,7 @@ class NegocioResource extends JsonResource
             'Dias_Servicio' => $this->Dias_Servicio,
             'Descripcion_Del_Negocio' => $this->Descripcion_Del_Negocio,
             'Usuario_Id' => $this->Usuario_Id,
+            'Foto' => $this->Foto
         ];
     }
 }

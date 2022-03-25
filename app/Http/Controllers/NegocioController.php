@@ -42,7 +42,8 @@ class NegocioController extends Controller
             'Horario_Servicio' => 'required|string|max:25',
             'Dias_Servicio' => 'required|string|max:25',
             'Descripcion_Del_Negocio' => 'required|string|max:25',
-            'Usuario_Id' => 'required'
+            'Usuario_Id' => 'required',
+            'Foto' => 'required|string|max:250'
         ]);
         $negocio = Negocio::create($request->all());
         // return new UserResource($usuario);
@@ -87,7 +88,8 @@ class NegocioController extends Controller
             'Horario_Servicio' => 'required|string|max:25',
             'Dias_Servicio' => 'required|string|max:25',
             'Descripcion_Del_Negocio' => 'required|string|max:25',
-            'Usuario_Id' => 'required'
+            'Usuario_Id' => 'required',
+            'Foto' => 'required|string|max:250'
         ]);
 
         $negocio = Negocio::find($id);
@@ -98,6 +100,7 @@ class NegocioController extends Controller
         $negocio->Dias_Servicio = $request->Dias_Servicio;
         $negocio->Descripcion_Del_Negocio = $request->Descripcion_Del_Negocio;
         $negocio->Usuario_Id = $request->Usuario_Id;
+        $negocio->Foto = $request->Foto;
 
         $negocio->save();
 
