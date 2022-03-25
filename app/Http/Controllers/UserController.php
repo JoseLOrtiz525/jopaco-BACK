@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -45,9 +46,24 @@ class UserController extends Controller
             'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
             'Email' => 'required|email|unique:users,email',
             'Password' => 'required|min:8',
-            'Foto' => 'required|string|max:250'
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
         ]);
-        $usuario = User::create($request->all());
+
+        $file = $request->file('Foto');
+        $name = time();
+        $file->move(public_path() . '/img/', $name);
+
+        DB::table("users")
+            ->insert([
+                "Nombre" => $request['Nombre'],
+                "Apellido_Paterno" => $request['Apellido_Paterno'],
+                "Apellido_Materno" => $request['Apellido_Materno'],
+                "Fecha_Nacimiento" => $request['Fecha_Nacimiento'],
+                "Tipo_Usuario" => $request['Tipo_Usuario'],
+                "Email" => $request['Email'],
+                "Password" => $request['Password'],
+                "Foto" => $name
+            ]);
         // return new UserResource($usuario);
         return ['success' => "Usuario Creado Correctamente"];
     }
