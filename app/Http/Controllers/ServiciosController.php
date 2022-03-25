@@ -41,7 +41,7 @@ class ServiciosController extends Controller
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
             'Tiempo_Estimado' => 'required|string|max:25',
-            'Foto' => "required"
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000"
         ]);
         $servicios = Servicios::create($request->all());
         // return new ServiciosResource($servicios);
