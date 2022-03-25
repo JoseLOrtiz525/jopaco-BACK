@@ -1,0 +1,36 @@
+## Index
+GET http://127.0.0.1:8000/api/favoritos HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|dOQsgCt5RdVP4EWPNd9hzEom4qyKu68fBqEsTp3u
+
+##create no lo ocupo
+
+## store
+POST http://127.0.0.1:8000/api/favoritos HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|dOQsgCt5RdVP4EWPNd9hzEom4qyKu68fBqEsTp3u
+
+{
+      "Usuario_Id": "1"
+    , "Servicio_Id":"1"
+}
+
+## show
+GET http://127.0.0.1:8000/api/favoritos/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|dOQsgCt5RdVP4EWPNd9hzEom4qyKu68fBqEsTp3u
+
+## edit No lo ocupo
+
+
+## update No lo ocupo
+
+## destroy
+
+DELETE http://127.0.0.1:8000/api/favoritos/2 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 1|dOQsgCt5RdVP4EWPNd9hzEom4qyKu68fBqEsTp3u

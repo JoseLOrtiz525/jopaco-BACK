@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Servicios extends Model
+class Favoritos extends Model
 {
     use HasFactory;
 
-    protected $table = "servicios";
+    protected $table = "favoritos";
 
     protected $fillable = [
         'id',
-        'Nombre_Servicio',
-        'Costo',
-        'Tiempo_Estimado',
-        'Foto'
+        'Usuario_Id',
+        'Servicio_Id'
     ];
 }

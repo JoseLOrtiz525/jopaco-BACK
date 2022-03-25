@@ -40,7 +40,8 @@ class ServiciosController extends Controller
         $request->validate([
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
-            'Tiempo_Estimado' => 'required|string|max:25'
+            'Tiempo_Estimado' => 'required|string|max:25',
+            'Foto' => "required"
         ]);
         $servicios = Servicios::create($request->all());
         // return new ServiciosResource($servicios);
@@ -83,7 +84,8 @@ class ServiciosController extends Controller
         $request->validate([
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
-            'Tiempo_Estimado' => 'required|string|max:25'
+            'Tiempo_Estimado' => 'required|string|max:25',
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
         ]);
 
         $servicios = Servicios::find($id);
@@ -91,6 +93,7 @@ class ServiciosController extends Controller
         $servicios->Nombre_Servicio = $request->Nombre_Servicio;
         $servicios->Costo = $request->Costo;
         $servicios->Tiempo_Estimado = $request->Tiempo_Estimado;
+        $servicios->Foto = $request->Foto;
 
         $servicios->save();
 
