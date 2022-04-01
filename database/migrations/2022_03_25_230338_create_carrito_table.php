@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFavoritosTable extends Migration
+class CreateCarritoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFavoritosTable extends Migration
      */
     public function up()
     {
-        Schema::create('favoritos', function (Blueprint $table) {
+        Schema::create('carrito', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 

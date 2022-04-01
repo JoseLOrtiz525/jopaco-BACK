@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\FavoritosCollection;
-use App\Models\Favoritos;
+use App\Http\Resources\CarritoCollection;
+use App\Models\Carrito;
 use Illuminate\Http\Request;
 
-class FavoritosController extends Controller
+class CarritoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class FavoritosController extends Controller
      */
     public function index()
     {
-        return new FavoritosCollection(Favoritos::all());
+        return new CarritoCollection(Carrito::all());
     }
 
     /**
@@ -40,7 +40,7 @@ class FavoritosController extends Controller
             'Usuario_Id' => 'required',
             'Servicio_Id' => 'required'
         ]);
-        Favoritos::create($request->all());
+        Carrito::create($request->all());
         // return new UserResource($usuario);
         return ['success' => "Favorito Agregado Correctamente"];
     }
@@ -53,7 +53,7 @@ class FavoritosController extends Controller
      */
     public function show($id)
     {
-        $favorito = Favoritos::find($id);
+        $favorito = Carrito::find($id);
         return $favorito;
     }
 
@@ -87,7 +87,7 @@ class FavoritosController extends Controller
      */
     public function destroy($id)
     {
-        $favorito = Favoritos::find($id);
+        $favorito = Carrito::find($id);
         $favorito->delete();
         return ['success' => "Favorito Eliminado Correctamente"];
     }
