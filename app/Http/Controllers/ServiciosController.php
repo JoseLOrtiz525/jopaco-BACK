@@ -6,6 +6,7 @@ use App\Http\Resources\ServiciosCollection;
 use App\Http\Resources\ServiciosResource;
 use App\Models\Servicios;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiciosController extends Controller
 {
@@ -41,10 +42,22 @@ class ServiciosController extends Controller
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
             'Tiempo_Estimado' => 'required|string|max:25',
-            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000"
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
         ]);
-        $servicios = Servicios::create($request->all());
+        //$servicios = Servicios::create($request->all());
         // return new ServiciosResource($servicios);
+
+        $file = $request->file('Foto');
+        $name = time();
+        $file->move(public_path() . '/img/', $name);
+
+        DB::table("servicios")
+            ->insert([
+                "Nombre_Servicio" => $request['Nombre_Servicio'],
+                "Costo" => $request['Costo'],
+                "Tiempo_Estimado" => $request['Tiempo_Estimado'],
+                "Foto" => $name
+            ]);
 
         return ['success' => "Servicio Creado Correctamente"];
     }
@@ -85,7 +98,7 @@ class ServiciosController extends Controller
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
             'Tiempo_Estimado' => 'required|string|max:25',
-            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
+            'Foto' => 'required|string|max:250'
         ]);
 
         $servicios = Servicios::find($id);

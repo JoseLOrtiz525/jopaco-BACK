@@ -43,7 +43,7 @@ class NegocioController extends Controller
             'Dias_Servicio' => 'required|string|max:25',
             'Descripcion_Del_Negocio' => 'required|string|max:25',
             'Usuario_Id' => 'required',
-            'Foto' => 'required|string|max:250'
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000"
         ]);
         $negocio = Negocio::create($request->all());
         // return new UserResource($usuario);
