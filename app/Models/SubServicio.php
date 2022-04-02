@@ -16,6 +16,7 @@ class SubServicio extends Model
         'Nombre',
         'Descripcion',
         'Calificacion',
-        'Precio'
+        'Precio',
+        'Servicio_Id'
     ];
 }

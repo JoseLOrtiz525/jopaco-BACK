@@ -14,6 +14,6 @@ class Carrito extends Model
     protected $fillable = [
         'id',
         'Usuario_Id',
-        'Servicio_Id'
+        'SubServicio_Id'
     ];
 }

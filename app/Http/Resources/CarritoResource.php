@@ -17,7 +17,7 @@ class CarritoResource extends JsonResource
         return [
             'id' => $this->id,
             'Usuario_Id' => $this->Usuario_Id,
-            'Servicio_Id' => $this->Servicio_Id
+            'SubServicio_Id' => $this->Servicio_Id
         ];
     }
 }

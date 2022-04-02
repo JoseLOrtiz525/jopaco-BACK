@@ -36,13 +36,14 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'Usuario_Id' => 'required',
-            'Servicio_Id' => 'required'
+            'SubServicio_Id' => 'required'
         ]);
         Carrito::create($request->all());
         // return new UserResource($usuario);
-        return ['success' => "Favorito Agregado Correctamente"];
+        return ['success' => "Carrito Agregado Correctamente"];
     }
 
     /**
@@ -53,8 +54,8 @@ class CarritoController extends Controller
      */
     public function show($id)
     {
-        $favorito = Carrito::find($id);
-        return $favorito;
+        $Carrito = Carrito::find($id);
+        return $Carrito;
     }
 
     /**
@@ -87,8 +88,8 @@ class CarritoController extends Controller
      */
     public function destroy($id)
     {
-        $favorito = Carrito::find($id);
-        $favorito->delete();
-        return ['success' => "Favorito Eliminado Correctamente"];
+        $Carrito = Carrito::find($id);
+        $Carrito->delete();
+        return ['success' => "Carrito Eliminado Correctamente"];
     }
 }

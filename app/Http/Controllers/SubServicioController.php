@@ -40,7 +40,8 @@ class SubServicioController extends Controller
             'Nombre' => 'required|string|max:25',
             'Descripcion' => 'required|string',
             'Calificacion' => 'required|string|max:25',
-            'Precio' => 'required|string|max:25'
+            'Precio' => 'required|string|max:25',
+            'Servicio_Id' => 'required'
         ]);
         $subServicio = SubServicio::create($request->all());
         // return new UserResource($Sub Servicio);
@@ -83,7 +84,8 @@ class SubServicioController extends Controller
             'Nombre' => 'required|string|max:25',
             'Descripcion' => 'required|string',
             'Calificacion' => 'required|string|max:25',
-            'Precio' => 'required|string|max:25'
+            'Precio' => 'required|string|max:25',
+            'Servicio_Id' => 'required'
         ]);
 
         $subServicio = SubServicio::find($id);
@@ -92,6 +94,7 @@ class SubServicioController extends Controller
         $subServicio->Descripcion = $request->Descripcion;
         $subServicio->Calificacion = $request->Calificacion;
         $subServicio->Precio = $request->Precio;
+        $subServicio->Servicio_Id = $request->Servicio_Id;
 
         $subServicio->save();
 

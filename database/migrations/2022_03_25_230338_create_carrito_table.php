@@ -20,8 +20,8 @@ class CreateCarritoTable extends Migration
             $table->unsignedBigInteger('Usuario_Id');
             $table->foreign('Usuario_Id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('Servicio_Id');
-            $table->foreign('Servicio_Id')->references('id')->on('servicios');
+            $table->unsignedBigInteger('SubServicio_Id');
+            $table->foreign('SubServicio_Id')->references('id')->on('sub_servicios');
         });
     }
 

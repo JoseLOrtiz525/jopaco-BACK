@@ -20,6 +20,9 @@ class CreateSubServiciosTable extends Migration
             $table->string('Calificacion', 25)->comment('Calificacion');
             $table->string('Precio', 25)->comment('Precio');
             $table->timestamps();
+
+            $table->unsignedBigInteger('Servicio_Id');
+            $table->foreign('Servicio_Id')->references('id')->on('servicios');
         });
     }
 

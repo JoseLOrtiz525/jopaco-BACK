@@ -19,7 +19,8 @@ class SubServicioResource extends JsonResource
             'Nombre' => $this->Nombre,
             'Descripcion' => $this->Descripcion,
             'Calificacion' => $this->Calificacion,
-            'Precio' => $this->Precio
+            'Precio' => $this->Precio,
+            'Servicio_Id' => $this->Servicio_Id
         ];
     }
 }
