@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\NegocioCollection;
 use App\Models\Negocio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NegocioController extends Controller
 {
@@ -45,8 +46,23 @@ class NegocioController extends Controller
             'Usuario_Id' => 'required',
             'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000"
         ]);
-        $negocio = Negocio::create($request->all());
+        //$negocio = Negocio::create($request->all());
         // return new UserResource($usuario);
+
+        $file = $request->file('Foto');
+        $name = time();
+        $file->move(public_path() . '/img/', $name);
+
+        DB::table("negocios")
+            ->insert([
+                "Nombre_Negocio" => $request['Nombre_Negocio'],
+                "Direccion" => $request['Direccion'],
+                "Horario_Servicio" => $request['Horario_Servicio'],
+                "Dias_Servicio" => $request['Dias_Servicio'],
+                "Descripcion_Del_Negocio" => $request['Descripcion_Del_Negocio'],
+                "Usuario_Id" => $request['Usuario_Id'],
+                "Foto" => $name
+            ]);
         return ['success' => "Negocio Creado Correctamente"];
     }
 
