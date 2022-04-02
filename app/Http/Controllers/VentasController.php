@@ -91,6 +91,8 @@ class VentasController extends Controller
         $user->SubServicio_Id = $request->SubServicio_Id;
 
         $user->save();
+
+        return ['success' => "Venta Actualizado Correctamente"];
     }
 
     /**
