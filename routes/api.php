@@ -6,6 +6,7 @@ use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\SubServicioController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VentasController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('ventas', VentasController::class)->except(['create', 'edit']);
     Route::apiResource('usuarios', UserController::class)->except(['create', 'edit']);
     Route::apiResource('negocios', NegocioController::class)->except(['create', 'edit']);
     Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
