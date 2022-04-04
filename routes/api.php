@@ -49,7 +49,7 @@ Route::post('/tokens/create', function (Request $request) {
 
     if ($newPass == $comprobar) {
         if ($user) {
-            $token = $user->createToken('Personal Access Token');
+            $token = $user->createToken('Token');
 
             return [
                 'token' => $token->plainTextToken,

@@ -20,6 +20,9 @@ class CreateServiciosTable extends Migration
             $table->string('Tiempo_Estimado', 25)->comment('Tiempo_Estimado');
             $table->string('Foto', 25)->comment('Foto');
             $table->timestamps();
+
+            $table->unsignedBigInteger('Negocio_Id');
+            $table->foreign('Negocio_Id')->references('id')->on('negocios');
         });
     }
 

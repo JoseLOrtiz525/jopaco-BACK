@@ -21,7 +21,8 @@ class ServiciosResource extends JsonResource
             'Nombre_Servicio' => $this->Nombre_Servicio,
             'Costo' => $this->Costo,
             'Tiempo_Estimado' => $this->Tiempo_Estimado,
-            'Foto' => $this->Foto
+            'Foto' => $this->Foto,
+            'Negocio_Id' => $this->Negocio_Id
 
         ];
     }

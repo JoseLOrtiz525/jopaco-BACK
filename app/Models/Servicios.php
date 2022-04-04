@@ -16,6 +16,7 @@ class Servicios extends Model
         'Nombre_Servicio',
         'Costo',
         'Tiempo_Estimado',
-        'Foto'
+        'Foto',
+        'Negocio_Id'
     ];
 }
