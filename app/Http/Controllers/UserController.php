@@ -7,6 +7,9 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel; 
+
+use App\Exports\UsersExport; 
 
 class UserController extends Controller
 {
