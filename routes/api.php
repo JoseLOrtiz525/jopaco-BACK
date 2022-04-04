@@ -39,13 +39,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/tokens/create', function (Request $request) {
 
     if ($request->email == null || $request->password == null) {
-        $error = ["error" => "Campos Email o Password Vacio"];
+        return ["error" => "Campos Email o Password Vacio"];
     }
     $newPass = $request->password;
 
     $user = User::where("email", $request->email)->first();
 
-    $comprobar = decrypt($user->Password);
+    $comprobar = $user->Password;
 
     if ($newPass == $comprobar) {
         if ($user) {

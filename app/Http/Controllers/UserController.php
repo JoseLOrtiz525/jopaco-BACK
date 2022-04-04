@@ -41,8 +41,8 @@ class UserController extends Controller
         $request->validate([
             'Nombre' => 'required|string|max:25',
             'Apellido_Paterno' => 'required|string|max:25',
-            'Apellido_Materno' => 'required|nullable|string|max:25',
-            'Fecha_Nacimiento' => 'required|date_format:Y-m-d',
+            'Apellido_Materno' => 'required|string|max:25',
+            'Fecha_Nacimiento' => 'required',
             'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
             'Email' => 'required|email|unique:users,email',
             'Password' => 'required|min:8',
@@ -77,7 +77,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $user->Password = decrypt($user->Password);
+
         return $user;
     }
 
@@ -104,8 +104,8 @@ class UserController extends Controller
         $request->validate([
             'Nombre' => 'required|string|max:25',
             'Apellido_Paterno' => 'required|string|max:25',
-            'Apellido_Materno' => 'bail|nullable|string|max:25',
-            'Fecha_Nacimiento' => 'required|date_format:Y-m-d',
+            'Apellido_Materno' => 'required|string|max:25',
+            'Fecha_Nacimiento' => 'required',
             'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
             'Email' => 'required|email',
             'Password' => 'required|min:8',

@@ -42,7 +42,8 @@ class ServiciosController extends Controller
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
             'Tiempo_Estimado' => 'required|string|max:25',
-            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
+            'Foto' => "required",
+            "Negocio_Id" => "required"
         ]);
         //$servicios = Servicios::create($request->all());
         // return new ServiciosResource($servicios);
@@ -56,7 +57,8 @@ class ServiciosController extends Controller
                 "Nombre_Servicio" => $request['Nombre_Servicio'],
                 "Costo" => $request['Costo'],
                 "Tiempo_Estimado" => $request['Tiempo_Estimado'],
-                "Foto" => $name
+                "Foto" => $name,
+                "Negocio_Id" => $request['Negocio_Id']
             ]);
 
         return ['success' => "Servicio Creado Correctamente"];
@@ -98,7 +100,8 @@ class ServiciosController extends Controller
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
             'Tiempo_Estimado' => 'required|string|max:25',
-            'Foto' => 'required|string|max:250'
+            'Foto' => 'required',
+            "Negocio_Id" => "required"
         ]);
 
         $servicios = Servicios::find($id);
@@ -107,6 +110,7 @@ class ServiciosController extends Controller
         $servicios->Costo = $request->Costo;
         $servicios->Tiempo_Estimado = $request->Tiempo_Estimado;
         $servicios->Foto = $request->Foto;
+        $servicios->Negocio_Id = $request->Negocio_Id;
 
         $servicios->save();
 

@@ -24,8 +24,10 @@ class User extends Authenticatable
         'Nombre',
         'Apellido_Paterno',
         'Apellido_Materno',
+
         'Fecha_Nacimiento',
         'Tipo_Usuario',
+
         'Email',
         'Password',
         'Foto'
