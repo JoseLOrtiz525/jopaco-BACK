@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarritoController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\NegocioController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SolicitudesController;
@@ -29,7 +30,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
     Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
     Route::apiResource('subservicios', SubServicioController::class)->except(['create', 'edit']);
-    Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit']);
+    Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit', 'update']);
+    Route::apiResource('excel', ExcelController::class)->except(['create', 'edit', 'update', 'store', 'show', 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
