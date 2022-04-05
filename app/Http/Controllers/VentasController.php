@@ -37,9 +37,9 @@ class VentasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Fecha' => 'required|date_format:Y-m-d',
+            'Fecha' => 'required',
             'Usuario_Id' => 'required',
-            'SubServicio_Id' => 'required'
+            'Total' => 'required'
         ]);
         Ventas::create($request->all());
         // return new UserResource($usuario);
@@ -79,16 +79,16 @@ class VentasController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'Fecha' => 'required|date_format:Y-m-d',
+            'Fecha' => 'required',
             'Usuario_Id' => 'required',
-            'SubServicio_Id' => 'required'
+            'Total' => 'required'
         ]);
 
         $user = Ventas::find($id);
 
         $user->Fecha = $request->Fecha;
         $user->Usuario_Id = $request->Usuario_Id;
-        $user->SubServicio_Id = $request->SubServicio_Id;
+        $user->Total = $request->Total;
 
         $user->save();
 

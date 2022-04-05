@@ -18,7 +18,7 @@ class VentasResource extends JsonResource
             'id' => $this->id,
             'Fecha' => $this->Fecha,
             'Usuario_Id' => $this->Usuario_Id,
-            'SubServicio_Id' => $this->SubServicio_Id
+            'Total' => $this->Total
         ];
     }
 }

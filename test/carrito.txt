@@ -27,14 +27,15 @@ Authorization: Bearer 4|04bRgrxUyekhpArXFdKdIF4vvpYQHZslEHoXwE8i
 
 
 ## update No lo ocupo
-PATCH http://127.0.0.1:8000/api/carrito/2 HTTP/1.1
+GET http://127.0.0.1:8000/api/carrito/2 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 5|k59NNFTFR6LycECYD4EDcZBKvfLqCdLdq4gU1FT5
+Authorization: Bearer 2|kvpQkUNTbQgO9yDnCLA63zqdUwqnu2SihJuLiXdT
 
 {
-      "id":"2"
+      "id":"1"
 }
+
 ## destroy
 
 DELETE http://127.0.0.1:8000/api/carrito/2 HTTP/1.1

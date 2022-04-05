@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CarritoCollection;
-use App\Models\Carrito;
-use App\Models\SubServicio;
+use App\Models\Detalle_Ventas;
 use Illuminate\Http\Request;
 
-class CarritoController extends Controller
+class DetalleVentasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        return new CarritoCollection(Carrito::all());
+        //
     }
 
     /**
@@ -37,62 +35,51 @@ class CarritoController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate([
-            'Usuario_Id' => 'required',
-            'SubServicio_Id' => 'required'
-        ]);
-        Carrito::create($request->all());
-        // return new UserResource($usuario);
-        return ['success' => "Carrito Agregado Correctamente"];
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Detalle_Ventas  $detalle_Ventas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Detalle_Ventas $detalle_Ventas)
     {
-        $Carrito = Carrito::find($id);
-        return $Carrito;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Detalle_Ventas  $detalle_Ventas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Detalle_Ventas $detalle_Ventas)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Detalle_Ventas  $detalle_Ventas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Detalle_Ventas $detalle_Ventas)
     {
-        return $id;
-        $subservicios = SubServicio::where('id', $id)->get();
-        return $subservicios;
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Detalle_Ventas  $detalle_Ventas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Detalle_Ventas $detalle_Ventas)
     {
-        $Carrito = Carrito::where('SubServicio_Id', $id)->get();
-        $Carrito[0]->delete();
-        return ['success' => "Carrito Eliminado Correctamente"];
+        //
     }
 }
