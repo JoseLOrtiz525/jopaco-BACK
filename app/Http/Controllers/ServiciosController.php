@@ -49,7 +49,11 @@ class ServiciosController extends Controller
         // return new ServiciosResource($servicios);
 
         $file = $request->file('Foto');
-        $name = time();
+
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . "." . $extension;
+
         $file->move(public_path() . '/img/', $name);
 
         DB::table("servicios")
@@ -104,12 +108,20 @@ class ServiciosController extends Controller
             "Negocio_Id" => "required"
         ]);
 
+        $file = $request->file('Foto');
+
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . "." . $extension;
+
+        $file->move(public_path() . '/img/', $name);
+
         $servicios = Servicios::find($id);
 
         $servicios->Nombre_Servicio = $request->Nombre_Servicio;
         $servicios->Costo = $request->Costo;
         $servicios->Tiempo_Estimado = $request->Tiempo_Estimado;
-        $servicios->Foto = $request->Foto;
+        $servicios->Foto = $name;
         $servicios->Negocio_Id = $request->Negocio_Id;
 
         $servicios->save();

@@ -50,7 +50,11 @@ class NegocioController extends Controller
         // return new UserResource($usuario);
 
         $file = $request->file('Foto');
-        $name = time();
+
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . "." . $extension;
+
         $file->move(public_path() . '/img/', $name);
 
         DB::table("negocios")
@@ -108,6 +112,14 @@ class NegocioController extends Controller
             'Foto' => 'required|string|max:250'
         ]);
 
+        $file = $request->file('Foto');
+
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . "." . $extension;
+
+        $file->move(public_path() . '/img/', $name);
+
         $negocio = Negocio::find($id);
 
         $negocio->Nombre_Negocio = $request->Nombre_Negocio;
@@ -116,7 +128,7 @@ class NegocioController extends Controller
         $negocio->Dias_Servicio = $request->Dias_Servicio;
         $negocio->Descripcion_Del_Negocio = $request->Descripcion_Del_Negocio;
         $negocio->Usuario_Id = $request->Usuario_Id;
-        $negocio->Foto = $request->Foto;
+        $negocio->Foto = $name;
 
         $negocio->save();
 
