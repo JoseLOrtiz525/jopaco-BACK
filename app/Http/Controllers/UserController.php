@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 use App\Exports\UsersExport;
+use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
 class UserController extends Controller
 {
@@ -108,6 +109,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $request->validate([
             'Nombre' => 'required|string|max:25',
             'Apellido_Paterno' => 'required|string|max:25',
@@ -119,15 +122,37 @@ class UserController extends Controller
             'Foto' => 'required'
         ]);
 
-        $file = $request->file('Foto');
-
-        $extension = $file->getClientOriginalExtension();
-
-        $name = time() . "." . $extension;
-
-        $file->move(public_path() . '/img/', $name);
-
         $user = User::find($id);
+
+        if ($user->Foto != $request->Foto) {
+            // Define the Base64 value you need to save as an image
+            $b64 = $request->Foto;
+
+            $data = explode(',', $b64);
+            // Obtain the original content (usually binary data)
+            $bin = base64_decode($data[1]);
+
+            // Load GD resource from binary data
+            $im = imageCreateFromString($bin);
+
+            // Make sure that the GD library was able to load the image
+            // This is important, because you should not miss corrupted or unsupported images
+            if (!$im) {
+                die('Base64 value is not a valid image');
+            }
+
+            // Specify the location where you want to save the image
+            $img_file = "img/" . $user->Foto;
+
+            // Save the GD resource as PNG in the best possible quality (no compression)
+            // This will strip any metadata or invalid contents (including, the PHP backdoor)
+            // To block any possible exploits, consider increasing the compression level
+            imagepng($im, $img_file, 0);
+
+            $name = $user->Foto;
+        } else {
+            $name = $user->Foto;
+        }
 
         $user->Nombre = $request->Nombre;
         $user->Apellido_Paterno = $request->Apellido_Paterno;
