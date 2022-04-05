@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ExcelController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/Excel', [ExcelController:: class, 'index'])->name('excel');
+
+Route::get('/Excel', [ExcelController:: class, 'descargar'])->name('excel');
