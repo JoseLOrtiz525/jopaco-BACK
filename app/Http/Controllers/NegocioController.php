@@ -6,6 +6,10 @@ use App\Http\Resources\NegocioCollection;
 use App\Models\Negocio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Exports\UsersExport;
+use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
 class NegocioController extends Controller
 {
@@ -109,7 +113,7 @@ class NegocioController extends Controller
             'Dias_Servicio' => 'required|string|max:25',
             'Descripcion_Del_Negocio' => 'required|string|max:25',
             'Usuario_Id' => 'required',
-            'Foto' => 'required|string|max:250'
+            'Foto' => 'required'
         ]);
 
         $negocio = Negocio::find($id);

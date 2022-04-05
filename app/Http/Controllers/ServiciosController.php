@@ -7,6 +7,10 @@ use App\Http\Resources\ServiciosResource;
 use App\Models\Servicios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Exports\UsersExport;
+use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
 class ServiciosController extends Controller
 {
@@ -42,7 +46,7 @@ class ServiciosController extends Controller
             'Nombre_Servicio' => 'required|string|max:25',
             'Costo' => 'required|string|max:25',
             'Tiempo_Estimado' => 'required|string|max:25',
-            'Foto' => "required",
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
             "Negocio_Id" => "required"
         ]);
         //$servicios = Servicios::create($request->all());
