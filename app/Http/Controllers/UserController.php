@@ -7,9 +7,9 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel; 
+use Maatwebsite\Excel\Facades\Excel;
 
-use App\Exports\UsersExport; 
+use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
@@ -53,7 +53,11 @@ class UserController extends Controller
         ]);
 
         $file = $request->file('Foto');
-        $name = time();
+
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . "." . $extension;
+
         $file->move(public_path() . '/img/', $name);
 
         DB::table("users")
@@ -112,8 +116,16 @@ class UserController extends Controller
             'Tipo_Usuario' => 'required',
             'Email' => 'required|email',
             'Password' => 'required|min:8',
-            'Foto' => 'required|string|max:250'
+            'Foto' => 'required'
         ]);
+
+        $file = $request->file('Foto');
+
+        $extension = $file->getClientOriginalExtension();
+
+        $name = time() . "." . $extension;
+
+        $file->move(public_path() . '/img/', $name);
 
         $user = User::find($id);
 
@@ -124,7 +136,7 @@ class UserController extends Controller
         $user->Tipo_Usuario = $request->Tipo_Usuario;
         $user->Email = $request->Email;
         $user->Password = $request->Password;
-        $user->Foto = $request->Foto;
+        $user->Foto = $name;
 
         $user->save();
 

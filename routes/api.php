@@ -47,7 +47,7 @@ Route::post('/tokens/create', function (Request $request) {
 
     $user = User::where("email", $request->email)->first();
 
-    $comprobar = decrypt($user->Password);
+    $comprobar = $user->Password;
 
     if ($newPass == $comprobar) {
         if ($user) {
