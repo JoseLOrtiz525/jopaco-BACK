@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
     Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
     Route::apiResource('subservicios', SubServicioController::class)->except(['create', 'edit']);
-    Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit', 'update']);
+    Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -45,7 +45,7 @@ Route::post('/tokens/create', function (Request $request) {
 
     $user = User::where("email", $request->email)->first();
 
-    $comprobar = $user->Password;
+    $comprobar = decrypt($user->Password);
 
     if ($newPass == $comprobar) {
         if ($user) {

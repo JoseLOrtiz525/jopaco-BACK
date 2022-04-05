@@ -10,14 +10,14 @@ Authorization: Bearer 4|04bRgrxUyekhpArXFdKdIF4vvpYQHZslEHoXwE8i
 POST http://127.0.0.1:8000/api/subservicios HTTP/1.1
 Content-Type: application/json
 Accept: application/json
-Authorization: Bearer 4|04bRgrxUyekhpArXFdKdIF4vvpYQHZslEHoXwE8i
+Authorization: Bearer 2|dwpzNjlWVR7XTwbmyFy4sRHKAY4Z8LGJswZoCdae
 
 {
     "Nombre" : "Paquete Basico",
     "Descripcion" : "Lo mas basico de el servicio",
     "Calificacion" : "10",
     "Precio" : "1000",
-    "Servicio_Id" : "1"
+    "Servicio_Id" : "2"
 }
 
 ## show

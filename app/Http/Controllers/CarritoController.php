@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\CarritoCollection;
 use App\Models\Carrito;
+use App\Models\SubServicio;
 use Illuminate\Http\Request;
 
 class CarritoController extends Controller
@@ -66,7 +67,6 @@ class CarritoController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -78,6 +78,8 @@ class CarritoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $subservicios = SubServicio::where('id', $id)->get();
+        return $subservicios;
     }
 
     /**
@@ -88,8 +90,8 @@ class CarritoController extends Controller
      */
     public function destroy($id)
     {
-        $Carrito = Carrito::find($id);
-        $Carrito->delete();
+        $Carrito = Carrito::where('SubServicio_Id', $id)->get();
+        $Carrito[0]->delete();
         return ['success' => "Carrito Eliminado Correctamente"];
     }
 }
