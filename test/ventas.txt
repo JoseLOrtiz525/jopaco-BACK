@@ -14,8 +14,8 @@ Authorization: Bearer 2|kQVm9625BEHnIsOlh7OpHsv2ILM1se21DngX2D6R
 
 {
       "Fecha":"1806-03-21"
-    , "Usuario_Id": "1"
-    , "SubServicio_Id":"1"
+    , "Usuario_Id": "1",
+    , "Total":"100"
 }
 
 ## show
@@ -36,7 +36,7 @@ Authorization: Bearer 2|kQVm9625BEHnIsOlh7OpHsv2ILM1se21DngX2D6R
 {
       "Fecha":"2022-03-21"
     , "Usuario_Id": "1"
-    , "SubServicio_Id":"1"
+    , "Total":"100"
 }
 
 ## destroy
