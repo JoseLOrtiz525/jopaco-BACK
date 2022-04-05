@@ -46,7 +46,7 @@ class UserController extends Controller
             'Apellido_Paterno' => 'required|string|max:25',
             'Apellido_Materno' => 'required|string|max:25',
             'Fecha_Nacimiento' => 'required',
-            'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
+            'Tipo_Usuario' => 'required',
             'Email' => 'required|email|unique:users,email',
             'Password' => 'required|min:8',
             'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
@@ -109,7 +109,7 @@ class UserController extends Controller
             'Apellido_Paterno' => 'required|string|max:25',
             'Apellido_Materno' => 'required|string|max:25',
             'Fecha_Nacimiento' => 'required',
-            'Tipo_Usuario' => 'required|in:Administrador, Usuario, Usuario_Privilegiado',
+            'Tipo_Usuario' => 'required',
             'Email' => 'required|email',
             'Password' => 'required|min:8',
             'Foto' => 'required|string|max:250'
