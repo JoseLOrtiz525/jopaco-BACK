@@ -8,4 +8,9 @@ Accept: application/json
     , "password":"12345678"
 }
 
-1|1QGqWCSvXFOnPnw4RjfyGMpZlU3kYSiFfnn2xv29
+3|Taj4q21JJiMtHKaY8QVXxbhNIy2HP7hTBowNV24f
+
+GET http://127.0.0.1:8000/api/excel HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer 3|Taj4q21JJiMtHKaY8QVXxbhNIy2HP7hTBowNV24f

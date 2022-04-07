@@ -14,7 +14,7 @@ class Ventas extends Model
     protected $fillable = [
         'id',
         'Fecha',
+        'Total',
         'Usuario_Id',
-        'Total'
     ];
 }
