@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\VentasCollection;
 use App\Models\Ventas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VentasController extends Controller
 {
@@ -43,6 +44,9 @@ class VentasController extends Controller
         ]);
         Ventas::create($request->all());
         // return new UserResource($usuario);
+
+        DB::table('carrito')->where('Usuario_Id', $request->Usuario_Id)->delete();
+
         return ['success' => "Ventas Agregado Correctamente"];
     }
 
