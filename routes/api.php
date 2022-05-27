@@ -40,16 +40,20 @@ Route::post('/registrar', function (Request $request) {
         'Fecha_Nacimiento' => 'required',
         'Email' => 'required|email|unique:users,email',
         'Password' => 'required|min:8',
-        'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
+
     ]);
 
-    $file = $request->file('Foto');
-
-    $extension = $file->getClientOriginalExtension();
-
-    $name = time() . "." . $extension;
-
-    $file->move(public_path() . '/img/', $name);
+    if ($request->has('foto')) {
+        $request->validate([
+            'Foto' => "required|image|mimes:jpeg,png,jpg|max:3000",
+        ]);
+        $file = $request->file('Foto');
+        $extension = $file->getClientOriginalExtension();
+        $name = time() . "." . $extension;
+        $file->move(public_path() . '/img/', $name);
+    } else {
+        $name = 'user.jpg';
+    }
 
     $tipo = 'Cliente';
 
@@ -65,7 +69,7 @@ Route::post('/registrar', function (Request $request) {
             "Foto" => $name
         ]);
 
-    $user = User::where("email", $request->email)->first();
+    $user = User::where("email", $request['Email'])->first();
 
     if ($user) {
         $token = $user->createToken('Token');
