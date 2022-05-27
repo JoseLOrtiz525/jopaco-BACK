@@ -97,7 +97,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//hola servidor
 Route::post('/tokens/create', function (Request $request) {
 
     if ($request->email == null || $request->password == null) {
