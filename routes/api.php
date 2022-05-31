@@ -2,17 +2,20 @@
 
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NegocioController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\SubServicioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentasController;
+use App\Mail\Verificar;
 use App\Models\Negocio;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,8 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
+
+
 Route::get('/negociosall', function () {
 
     $negocios = Negocio::all();
@@ -32,7 +37,24 @@ Route::get('/negociosall', function () {
     return $negocios;
 });
 
+Route::get('/register/verify/{code}', function ($code) {
+    $user = User::where('confirmation_code', $code)->first();
+
+    if (!$user)
+        return redirect('/');
+
+    $user->confirmed = true;
+    $user->confirmation_code = null;
+    $user->save();
+
+    return 'notification Has confirmado correctamente tu correo!';
+});
+
+
 Route::post('/registrar', function (Request $request) {
+
+    $Token = Str::random(25);
+
     $request->validate([
         'Nombre' => 'required|string|max:25',
         'Apellido_Paterno' => 'required|string|max:25',
@@ -63,11 +85,19 @@ Route::post('/registrar', function (Request $request) {
             "Apellido_Paterno" => $request['Apellido_Paterno'],
             "Apellido_Materno" => $request['Apellido_Materno'],
             "Fecha_Nacimiento" => $request['Fecha_Nacimiento'],
+
+            "confirmed" => 0,
+            "confirmation_code" => $Token,
+
             "Tipo_Usuario" => $tipo,
             "Email" => $request['Email'],
             "Password" => encrypt($request['Password']),
             "Foto" => $name
         ]);
+
+    $request['Token'] = $Token;
+
+    Mail::to($request['Email'])->send(new Verificar($request));
 
     $user = User::where("email", $request['Email'])->first();
 
