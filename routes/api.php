@@ -28,8 +28,6 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-
-
 Route::get('/negociosall', function () {
 
     $negocios = Negocio::all();
@@ -40,15 +38,29 @@ Route::get('/negociosall', function () {
 Route::get('/register/verify/{code}', function ($code) {
     $user = User::where('confirmation_code', $code)->first();
 
-    if (!$user)
+    if (!$user) {
         return redirect('/');
+    }
 
     $user->confirmed = true;
     $user->confirmation_code = null;
     $user->save();
 
-    return 'notification Has confirmado correctamente tu correo!';
+    return "Cierre Esta pestaña, Su usuario fue verificado";
 });
+
+
+Route::post('/list', function (Request $request) {
+    $user = User::where('ID', $request->ID)->first();
+
+    if (!$user) {
+        return redirect('/');
+    }
+
+    return $user;
+});
+
+
 
 
 Route::post('/registrar', function (Request $request) {
