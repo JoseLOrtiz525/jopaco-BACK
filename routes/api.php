@@ -84,15 +84,16 @@ Route::post('/registrar', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('ventas', VentasController::class)->except(['create', 'edit']);
-    Route::apiResource('usuarios', UserController::class)->except(['create', 'edit']);
-    Route::apiResource('negocios', NegocioController::class)->except(['create', 'edit']);
-    Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
-    Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
-    Route::apiResource('subservicios', SubServicioController::class)->except(['create', 'edit']);
-    Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit', 'update']);
-    Route::apiResource('excel', ExcelController::class)->except(['create', 'edit', 'update', 'store', 'show', 'destroy']);
 });
+Route::apiResource('ventas', VentasController::class)->except(['create', 'edit']);
+Route::apiResource('usuarios', UserController::class)->except(['create', 'edit']);
+Route::apiResource('negocios', NegocioController::class)->except(['create', 'edit']);
+Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
+Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
+Route::apiResource('subservicios', SubServicioController::class)->except(['create', 'edit']);
+Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit', 'update']);
+Route::apiResource('excel', ExcelController::class)->except(['create', 'edit', 'update', 'store', 'show', 'destroy']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
