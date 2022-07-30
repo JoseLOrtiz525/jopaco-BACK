@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 use App\Exports\UsersExport;
+use App\Models\Negocio;
 use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
 class ServiciosController extends Controller
@@ -80,7 +81,8 @@ class ServiciosController extends Controller
      */
     public function show($id)
     {
-        $servicios = Servicios::find($id);
+        $negocios = Negocio::find($id);
+        $servicios = Servicios::where('id', $negocios->id);
         return $servicios;
     }
 
