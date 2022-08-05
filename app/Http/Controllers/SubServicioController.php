@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\SubServicioCollection;
+use App\Models\Negocio;
 use App\Models\Servicios;
 use App\Models\SubServicio;
 use Illuminate\Http\Request;
@@ -122,5 +123,37 @@ class SubServicioController extends Controller
         $user = SubServicio::find($id);
         $user->delete();
         return ['success' => "Sub Servicio Eliminado Correctamente"];
+    }
+
+    public function showAll($id)
+    {
+        // return $id;
+        $subServicio = SubServicio::find($id);
+        
+        $servicio = Servicios::where('id', '=', $subServicio->Servicio_Id)
+        ->get();
+        $negocio = Negocio::where('id', '=', $servicio->Negocio_Id)
+        ->get();
+
+
+        $detalle = array(
+            'Negocio_id' => $negocio->id,
+            'Nombre_Negocio' => $negocio->Nombre_Negocio,
+            'Direccion' => $negocio->Direccion,
+            'Horario_Servicio' => $negocio->Horario_Servicio,
+            'Dias_Servicio' => $negocio->Dias_Servicio,
+            'Foto_Negocio' => $negocio->Foto,
+
+            'Nombre_Servicio' => $servicio->Nombre_Servicio,
+            'Costo' => $servicio->Costo,
+            'Tiempo_Estimado' => $servicio->Tiempo_Estimado,
+            'Foto_Servicio' => $servicio->Foto,
+
+            'Nombre' => $subServicio->Nombre,
+            'Descripcion' => $subServicio->Descripcion,
+            'Calificacion' => $subServicio->Calificacion,
+            'Precio' => $subServicio->Precio,
+        );
+        return $detalle;
     }
 }

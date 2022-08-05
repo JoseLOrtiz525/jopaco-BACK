@@ -97,6 +97,8 @@ Route::apiResource('subservicios', SubServicioController::class)->except(['creat
 
 Route::get('/subservicios/serviciosSubservicios/{id}', [SubServicioController::class, "serviciosSubservicios"])->name("subservicios.serviciosSubservicios");
 
+Route::get('/subservicios/showAll/{id}', [SubServicioController::class, "showAll"])->name("subservicios.showAll");
+
 Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit', 'update']);
 Route::apiResource('excel', ExcelController::class)->except(['create', 'edit', 'update', 'store', 'show', 'destroy']);
 
