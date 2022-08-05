@@ -129,15 +129,13 @@ class SubServicioController extends Controller
     {
         // return $id;
         $subServicio = SubServicio::find($id);
-        
-        $servicio = Servicios::where('id', '=', $subServicio->Servicio_Id)
-        ->get();
-        $negocio = Negocio::where('id', '=', $servicio->Negocio_Id)
-        ->get();
+
+        $servicio = Servicios::find($subServicio->Servicio_Id);
+
+        $negocio = Negocio::find($servicio->Negocio_Id);
 
 
         $detalle = array(
-            'Negocio_id' => $negocio->id,
             'Nombre_Negocio' => $negocio->Nombre_Negocio,
             'Direccion' => $negocio->Direccion,
             'Horario_Servicio' => $negocio->Horario_Servicio,
