@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\SubServicioCollection;
+use App\Models\Servicios;
 use App\Models\SubServicio;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,13 @@ class SubServicioController extends Controller
     {
         $user = SubServicio::find($id);
         return $user;
+    }
+
+    public function serviciosSubservicios($id)
+    {
+        $servicio = Servicios::find($id);
+        $subServicio = SubServicio::where('id', $servicio->id);
+        return $subServicio;
     }
 
     /**

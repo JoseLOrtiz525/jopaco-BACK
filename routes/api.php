@@ -90,7 +90,13 @@ Route::apiResource('usuarios', UserController::class)->except(['create', 'edit']
 Route::apiResource('negocios', NegocioController::class)->except(['create', 'edit']);
 Route::apiResource('solicitudes', SolicitudesController::class)->except(['create', 'edit']);
 Route::apiResource('servicios', ServiciosController::class)->except(['create', 'edit']);
+
+Route::get('/servicios/negocioServicios/{id}', [ServiciosController::class, "negocioServicios"])->name("servicios.negocioServicios");
+
 Route::apiResource('subservicios', SubServicioController::class)->except(['create', 'edit']);
+
+Route::get('/subservicios/serviciosSubservicios/{id}', [SubServicioController::class, "serviciosSubservicios"])->name("subservicios.serviciosSubservicios");
+
 Route::apiResource('carrito', CarritoController::class)->except(['create', 'edit', 'update']);
 Route::apiResource('excel', ExcelController::class)->except(['create', 'edit', 'update', 'store', 'show', 'destroy']);
 
