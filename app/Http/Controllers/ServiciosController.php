@@ -85,11 +85,10 @@ class ServiciosController extends Controller
         return $servicios;
     }
 
-
     public function negocioServicios($id)
     {
-        $negocios = Negocio::find($id);
-        $servicios = Servicios::where('id', $negocios->id);
+        $negocio = Negocio::find($id);
+        $servicios = Servicios::where('Negocio_Id', $negocio->id)->get();
         return $servicios;
     }
 

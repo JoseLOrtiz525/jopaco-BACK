@@ -64,7 +64,7 @@ class SubServicioController extends Controller
     public function serviciosSubservicios($id)
     {
         $servicio = Servicios::find($id);
-        $subServicio = SubServicio::where('id', $servicio->id);
+        $subServicio = SubServicio::where('Servicio_Id', $servicio->id)->get();
         return $subServicio;
     }
 
