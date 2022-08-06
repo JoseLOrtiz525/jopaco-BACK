@@ -142,6 +142,7 @@ class SubServicioController extends Controller
             'Dias_Servicio' => $negocio->Dias_Servicio,
             'Foto_Negocio' => $negocio->Foto,
 
+            'id_servicio' => $servicio->$id,
             'Nombre_Servicio' => $servicio->Nombre_Servicio,
             'Costo' => $servicio->Costo,
             'Tiempo_Estimado' => $servicio->Tiempo_Estimado,
